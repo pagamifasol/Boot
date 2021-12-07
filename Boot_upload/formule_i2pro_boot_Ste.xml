@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Maths Locale="English_United Kingdom.1252" DefaultLocale="C" Id="formule_i2pro_boot">
+ <MathItems>
+  <MathExpression Id="WheelTorque_fromGPS" DisplayDPS="2" DisplayColorIndex="0" Interpolate="1" Script="(2750 * derivative('GPS_VgpsSpeed', 0.1) +0.5*1.18*2*'GPS_VgpsSpeed'^2 )* 0.480" SampleRate="0" Unit=""/>
+  <MathExpression Id="WheelTorque_fromIMUx" DisplayDPS="2" DisplayColorIndex="1" Interpolate="1" Script="(-2750* 'C13IMUCGX' + 0.5*1.18*2*'GPS_VgpsSpeed'^2 )* 0.480" SampleRate="0" Unit=""/>
+  <MathExpression Id="WheelTorque_fromEngine" DisplayDPS="2" DisplayColorIndex="2" Interpolate="1" Script="'CAN10001XSI1ECM_Engine_Torque_InformationActual_Eng_Torque'*'CAN10003XSI1ECM_Engine_Status_InformationEngine_Speed'/'GPS_VgpsSpeed'*0.75*0.480" SampleRate="0" Unit=""/>
+  <MathExpression Id="OverallEfficiency_fromGPS" DisplayDPS="2" DisplayColorIndex="4" Interpolate="1" Script="2750*derivative('GPS_VgpsSpeed')*'GPS_VgpsSpeed'/('CAN10001XSI1ECM_Engine_Torque_InformationActual_Eng_Torque'*'CAN10003XSI1ECM_Engine_Status_InformationEngine_Speed'*0.75)" SampleRate="0" Unit=""/>
+  <MathExpression Id="OverallEfficiency_fromIMU" DisplayDPS="2" DisplayColorIndex="5" Interpolate="1" Script="-2750*'C13IMUCGX'*'GPS_VgpsSpeed'/('CAN10001XSI1ECM_Engine_Torque_InformationActual_Eng_Torque'*'CAN10003XSI1ECM_Engine_Status_InformationEngine_Speed'*0.75)" SampleRate="0" Unit=""/>
+  <MathExpression Id="PowerLoss" DisplayDPS="2" DisplayColorIndex="7" Interpolate="1" Script="(('CAN10001XSI1ECM_Engine_Torque_InformationActual_Eng_Torque'*'CAN10003XSI1ECM_Engine_Status_InformationEngine_Speed'*0.75)-(-2750*'C13IMUCGX'*'GPS_VgpsSpeed'))/1000" SampleRate="0" Unit=""/>
+  <MathExpression Id="Slope_fromGPS" DisplayDPS="2" DisplayColorIndex="0" Interpolate="1" Script="derivative('GPS_AltgpsAltitude')/'GPS_VgpsSpeed'" SampleRate="0" Unit=""/>
+  <MathExpression Id="VerticalSpeed_fromGPS" DisplayDPS="2" DisplayColorIndex="1" Interpolate="1" Script="derivative('GPS_AltgpsAltitude')" SampleRate="0" Unit=""/>
+  <MathExpression Id="EnginePower" DisplayDPS="2" DisplayColorIndex="2" Interpolate="1" Script="'CAN10001XSI1ECM_Engine_Torque_InformationActual_Eng_Torque'*'CAN10003XSI1ECM_Engine_Status_InformationEngine_Speed'/1000" SampleRate="0" Unit=""/>
+  <MathExpression Id="TorqueLosses" DisplayDPS="2" DisplayColorIndex="3" Interpolate="1" Script="'PowerLoss'*1000/'GPS_VgpsSpeed'*0.48" SampleRate="0" Unit=""/>
+  <MathExpression Id="EMotorsTorque_fromGPS_3Cont" DisplayDPS="2" DisplayColorIndex="4" Interpolate="1" Script="min((3*254*12.5)*0.95,(250*0.9*1000/'GPS_VgpsSpeed'*0.480))" SampleRate="0" Unit=""/>
+  <MathExpression Id="EMotorsTorque_fromGPS_2Peak" DisplayDPS="2" DisplayColorIndex="5" Interpolate="1" Script="min((2*468*12.5*0.95),(375*0.9*1000/'GPS_VgpsSpeed'*0.480))" SampleRate="0" Unit=""/>
+  <MathExpression Id="EMotorsTorque_fromGPS_2Cont" DisplayDPS="2" DisplayColorIndex="5" Interpolate="1" Script="min((2*254*12.5)*0.95,(250*0.9*1000/'GPS_VgpsSpeed'*0.480))" SampleRate="0" Unit=""/>
+  <MathExpression Id="PowerLoss_fromGPSonly" DisplayDPS="2" DisplayColorIndex="7" Interpolate="1" Script="(('CAN10001XSI1ECM_Engine_Torque_InformationActual_Eng_Torque'*'CAN10003XSI1ECM_Engine_Status_InformationEngine_Speed'*0.75)-(2750*derivative('GPS_VgpsSpeed')*'GPS_VgpsSpeed'))/1000" SampleRate="0" Unit=""/>
+  <MathExpression Id="TorqueLosses_fromGPSonly" DisplayDPS="2" DisplayColorIndex="3" Interpolate="1" Script="'PowerLoss_fromGPSonly'*1000/'GPS_VgpsSpeed'*0.48" SampleRate="0" Unit=""/>
+  <MathExpression Id="EMotorsTorque_fromGPS_3Peak" DisplayDPS="2" DisplayColorIndex="5" Interpolate="1" Script="min((3*468*12.5*0.95),(375*0.9*1000/'GPS_VgpsSpeed'*0.480))" SampleRate="0" Unit=""/>
+ </MathItems>
+</Maths>

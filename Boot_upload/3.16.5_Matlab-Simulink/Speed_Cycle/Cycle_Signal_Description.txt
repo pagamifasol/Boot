@@ -1,0 +1,7 @@
+Cycle matrix is composed by:
+_______________________________________________
+1st Column -> time          [s]
+2nd Column -> speed         [km/h]
+3th Column -> slope         [%]
+4th Column -> charge power  [W] (positive value)
+________________________________________________
